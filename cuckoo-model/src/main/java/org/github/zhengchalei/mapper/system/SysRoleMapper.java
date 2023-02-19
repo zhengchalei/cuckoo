@@ -1,15 +1,17 @@
 package org.github.zhengchalei.mapper.system;
 
-import org.github.zhengchalei.dto.system.SysRoleDto;
 import org.github.zhengchalei.model.system.SysRole;
+import org.github.zhengchalei.request.SysRoleSaveRequest;
+import org.github.zhengchalei.request.SysRoleUpdateRequest;
+import org.github.zhengchalei.response.SysRoleResponse;
 import org.mapstruct.*;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface SysRoleMapper {
-    SysRole toEntity(SysRoleDto sysRoleDto);
+    SysRole toEntity(SysRoleSaveRequest sysRoleSaveRequest);
 
-    SysRoleDto toDto(SysRole sysRole);
+    SysRoleResponse toDto(SysRole sysRole);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    SysRole partialUpdate(SysRoleDto sysRoleDto, @MappingTarget SysRole sysRole);
+    SysRole partialUpdate(SysRoleUpdateRequest sysRoleUpdateRequest, @MappingTarget SysRole sysRole);
 }

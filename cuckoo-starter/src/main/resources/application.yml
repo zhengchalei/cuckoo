@@ -1,9 +1,18 @@
 spring:
   jpa:
     generate-ddl: true
+    show-sql: true
     hibernate:
       ddl-auto: update
-    show-sql: true
+    properties:
+      jakarta.persistence.sharedCache.mode: ALL
+    # 性能
+    open-in-view: false
+  data:
+    web:
+      pageable:
+        # 分页 第一页为 1
+        one-indexed-parameters: true
 springdoc:
   swagger-ui:
     path: /swagger-ui.html

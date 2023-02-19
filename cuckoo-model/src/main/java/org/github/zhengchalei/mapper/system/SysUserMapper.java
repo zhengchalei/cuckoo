@@ -1,15 +1,20 @@
 package org.github.zhengchalei.mapper.system;
 
-import org.github.zhengchalei.dto.system.SysUserDto;
 import org.github.zhengchalei.model.system.SysUser;
+import org.github.zhengchalei.request.SysUserSaveRequest;
+import org.github.zhengchalei.request.SysUserUpdateRequest;
+import org.github.zhengchalei.response.SysUserResponse;
 import org.mapstruct.*;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface SysUserMapper {
-    SysUser toEntity(SysUserDto sysUserDto);
 
-    SysUserDto toDto(SysUser sysUser);
+    SysUser toEntity(SysUserSaveRequest sysUserSaveRequest);
+
+    SysUserResponse toDto(SysUser sysUser);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    SysUser partialUpdate(SysUserDto sysUserDto, @MappingTarget SysUser sysUser);
+    SysUser partialUpdate(SysUserUpdateRequest sysUserUpdateRequest, @MappingTarget SysUser sysUser);
+
+    SysUserResponse toResponse(SysUser sysUser);
 }

@@ -13,7 +13,7 @@ public class SysRole {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     @JdbcTypeCode(SqlTypes.INTEGER)
-    private Long id;
+    private Integer id;
 
     @Column(unique = true, nullable = false)
     private String name;
