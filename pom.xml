@@ -24,6 +24,7 @@
         <module>cuckoo-service</module>
         <module>cuckoo-service-api</module>
         <module>cuckoo-controller</module>
+        <module>cuckoo-plugin</module>
     </modules>
 
     <properties>
