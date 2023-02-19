@@ -36,4 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
-/.idea/
+
+
+### 忽略文件夹
+.idea/

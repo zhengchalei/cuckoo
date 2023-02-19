@@ -1,7 +1,7 @@
 package org.github.zhengchalei.mapper.system;
 
-import org.github.zhengchalei.model.system.SysRole;
 import org.github.zhengchalei.dto.system.SysRoleDto;
+import org.github.zhengchalei.model.system.SysRole;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
