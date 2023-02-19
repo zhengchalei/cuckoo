@@ -16,5 +16,7 @@ public interface SysUserMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     SysUser partialUpdate(SysUserUpdateRequest sysUserUpdateRequest, @MappingTarget SysUser sysUser);
 
+    SysUser update(SysUserUpdateRequest sysUserUpdateRequest,@MappingTarget  SysUser flush);
+
     SysUserResponse toResponse(SysUser sysUser);
 }

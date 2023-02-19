@@ -14,4 +14,8 @@ public interface SysRoleMapper {
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     SysRole partialUpdate(SysRoleUpdateRequest sysRoleUpdateRequest, @MappingTarget SysRole sysRole);
+
+    SysRole update(SysRoleUpdateRequest sysRoleUpdateRequest, @MappingTarget SysRole flush);
+
+    SysRoleResponse toResponse(SysRole flush);
 }

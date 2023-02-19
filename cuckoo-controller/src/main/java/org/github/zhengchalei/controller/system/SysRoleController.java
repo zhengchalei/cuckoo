@@ -2,6 +2,7 @@ package org.github.zhengchalei.controller.system;
 
 import lombok.RequiredArgsConstructor;
 import org.github.zhengchalei.request.SysRoleSaveRequest;
+import org.github.zhengchalei.request.SysRoleUpdateRequest;
 import org.github.zhengchalei.response.SysRoleResponse;
 import org.github.zhengchalei.service.system.SysRoleService;
 import org.springframework.data.domain.Page;
@@ -10,6 +11,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/sys/roles")
@@ -17,18 +20,38 @@ public class SysRoleController {
 
     private final SysRoleService sysRoleService;
 
-    @GetMapping
+    @GetMapping("/page")
     public Page<SysRoleResponse> findSysRolePage(@PageableDefault(size = 10, sort = "id") Pageable pageable, @RequestParam(required = false, defaultValue = "") String name) {
-        return this.sysRoleService.findSysRolePage(pageable, name);
+        return sysRoleService.findSysRolePage(pageable, name);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/list")
+    public List<SysRoleResponse> findSysRolePage(@RequestParam(required = false, defaultValue = "") String name) {
+        return sysRoleService.findSysRoleList(name);
+    }
+
+    @GetMapping("/id/{id}")
     public SysRoleResponse findSysRoleById(@PathVariable Integer id) {
-        return this.sysRoleService.findSysRoleById(id);
+        return sysRoleService.findSysRoleById(id);
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public SysRoleResponse saveSysRole(@Validated @RequestBody SysRoleSaveRequest sysRoleSaveRequest) {
-        return this.sysRoleService.saveSysRole(sysRoleSaveRequest);
+        return sysRoleService.saveSysRole(sysRoleSaveRequest);
+    }
+
+    @PutMapping("/update/{id}")
+    public SysRoleResponse updateSysRoleById(@PathVariable Integer id, @RequestBody SysRoleUpdateRequest sysRoleUpdateRequest) {
+        return sysRoleService.updateSysRoleById(id, sysRoleUpdateRequest);
+    }
+
+    @PatchMapping("/partial-update/{id}")
+    public SysRoleResponse partialSysRoleById(@PathVariable Integer id, @RequestBody SysRoleUpdateRequest sysRoleUpdateRequest) {
+        return sysRoleService.partialSysRoleById(id, sysRoleUpdateRequest);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteSysRoleById(@PathVariable Integer id) {
+        sysRoleService.deleteSysRoleById(id);
     }
 }
