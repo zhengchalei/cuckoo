@@ -1,0 +1,11 @@
+spring:
+  freemarker:
+    template-loader-path: classpath:/templates
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    cache: false
+
+plugin:
+  code-generator:
+    project-path: C:\Users\zheng\IdeaProjects\cuckoo

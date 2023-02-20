@@ -1,9 +1,9 @@
 package org.github.zhengchalei.service.system;
 
 import jakarta.validation.constraints.NotNull;
-import org.github.zhengchalei.request.SysUserSaveRequest;
-import org.github.zhengchalei.request.SysUserUpdateRequest;
-import org.github.zhengchalei.response.SysUserResponse;
+import org.github.zhengchalei.entity.system.request.SysUserSaveRequest;
+import org.github.zhengchalei.entity.system.request.SysUserUpdateRequest;
+import org.github.zhengchalei.entity.system.response.SysUserResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -15,13 +15,13 @@ public interface SysUserService {
 
     List<SysUserResponse> findSysUserList(String username);
 
-    SysUserResponse findSysUserById(Integer id);
+    SysUserResponse findSysUserById(Long id);
 
     SysUserResponse saveSysUser(SysUserSaveRequest sysUserSaveRequest);
 
-    SysUserResponse updateSysUserById(Integer id, SysUserUpdateRequest sysUserUpdateRequest);
+    SysUserResponse updateSysUserById(Long id, SysUserUpdateRequest sysUserUpdateRequest);
 
-    SysUserResponse partialSysUserById(Integer id, SysUserUpdateRequest sysUserUpdateRequest);
+    SysUserResponse partialSysUserById(Long id, SysUserUpdateRequest sysUserUpdateRequest);
 
-    void deleteSysUserById(Integer id);
+    void deleteSysUserById(Long id);
 }

@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>org.github.zhengchalei</groupId>
-            <artifactId>cuckoo-model</artifactId>
+            <artifactId>cuckoo-entity</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

@@ -19,12 +19,12 @@
 
     <modules>
         <module>cuckoo-starter</module>
-        <module>cuckoo-model</module>
         <module>cuckoo-repository</module>
         <module>cuckoo-service</module>
         <module>cuckoo-service-api</module>
         <module>cuckoo-controller</module>
         <module>cuckoo-plugin</module>
+        <module>cuckoo-entity</module>
     </modules>
 
     <properties>

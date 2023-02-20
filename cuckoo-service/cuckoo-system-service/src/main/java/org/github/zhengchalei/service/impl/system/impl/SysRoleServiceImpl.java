@@ -2,12 +2,12 @@ package org.github.zhengchalei.service.impl.system.impl;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
-import org.github.zhengchalei.mapper.system.SysRoleMapper;
-import org.github.zhengchalei.model.system.SysRole;
+import org.github.zhengchalei.entity.system.entity.SysRole;
+import org.github.zhengchalei.entity.system.mapper.SysRoleMapper;
+import org.github.zhengchalei.entity.system.request.SysRoleSaveRequest;
+import org.github.zhengchalei.entity.system.request.SysRoleUpdateRequest;
+import org.github.zhengchalei.entity.system.response.SysRoleResponse;
 import org.github.zhengchalei.repository.system.SysRoleRepository;
-import org.github.zhengchalei.request.SysRoleSaveRequest;
-import org.github.zhengchalei.request.SysRoleUpdateRequest;
-import org.github.zhengchalei.response.SysRoleResponse;
 import org.github.zhengchalei.service.system.SysRoleService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +18,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static org.github.zhengchalei.model.system.QSysRole.sysRole;
+import static org.github.zhengchalei.entity.system.entity.QSysRole.sysRole;
+
 
 @RequiredArgsConstructor
 @Service
@@ -41,7 +42,7 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
     @Override
-    public SysRoleResponse findSysRoleById(Integer id) {
+    public SysRoleResponse findSysRoleById(Long id) {
         return sysRoleRepository.findById(id).map(sysRoleMapper::toResponse).orElseThrow();
     }
 
@@ -53,7 +54,7 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
     @Override
-    public SysRoleResponse updateSysRoleById(Integer id, SysRoleUpdateRequest sysRoleUpdateRequest) {
+    public SysRoleResponse updateSysRoleById(Long id, SysRoleUpdateRequest sysRoleUpdateRequest) {
         sysRoleUpdateRequest.setId(id);
         SysRole flush = sysRoleRepository.findById(id).orElseThrow();
         sysRoleMapper.update(sysRoleUpdateRequest, flush);
@@ -61,14 +62,14 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
     @Override
-    public SysRoleResponse partialSysRoleById(Integer id, SysRoleUpdateRequest sysRoleUpdateRequest) {
+    public SysRoleResponse partialSysRoleById(Long id, SysRoleUpdateRequest sysRoleUpdateRequest) {
         SysRole flush = sysRoleRepository.findById(id).orElseThrow();
         sysRoleMapper.partialUpdate(sysRoleUpdateRequest, flush);
         return sysRoleMapper.toResponse(flush);
     }
 
     @Override
-    public void deleteSysRoleById(Integer id) {
+    public void deleteSysRoleById(Long id) {
         sysRoleRepository.deleteById(id);
     }
 

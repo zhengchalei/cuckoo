@@ -2,14 +2,14 @@ package org.github.zhengchalei.service.impl.system.impl;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
-import org.github.zhengchalei.mapper.system.SysUserMapper;
-import org.github.zhengchalei.model.system.SysRole;
-import org.github.zhengchalei.model.system.SysUser;
+import org.github.zhengchalei.entity.system.entity.SysRole;
+import org.github.zhengchalei.entity.system.entity.SysUser;
+import org.github.zhengchalei.entity.system.mapper.SysUserMapper;
+import org.github.zhengchalei.entity.system.request.SysUserSaveRequest;
+import org.github.zhengchalei.entity.system.request.SysUserUpdateRequest;
+import org.github.zhengchalei.entity.system.response.SysUserResponse;
 import org.github.zhengchalei.repository.system.SysRoleRepository;
 import org.github.zhengchalei.repository.system.SysUserRepository;
-import org.github.zhengchalei.request.SysUserSaveRequest;
-import org.github.zhengchalei.request.SysUserUpdateRequest;
-import org.github.zhengchalei.response.SysUserResponse;
 import org.github.zhengchalei.service.system.SysUserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,7 +21,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static org.github.zhengchalei.model.system.QSysUser.sysUser;
+import static org.github.zhengchalei.entity.system.entity.QSysUser.sysUser;
+
 
 @RequiredArgsConstructor
 @Service
@@ -44,7 +45,7 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public SysUserResponse findSysUserById(Integer id) {
+    public SysUserResponse findSysUserById(Long id) {
         return sysUserRepository.findById(id).map(sysUserMapper::toResponse).orElseThrow();
     }
 
@@ -59,7 +60,7 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public SysUserResponse updateSysUserById(Integer id, SysUserUpdateRequest sysUserUpdateRequest) {
+    public SysUserResponse updateSysUserById(Long id, SysUserUpdateRequest sysUserUpdateRequest) {
         sysUserUpdateRequest.setId(id);
         SysUser flush = sysUserRepository.findById(id).orElseThrow();
         sysUserMapper.update(sysUserUpdateRequest, flush);
@@ -69,7 +70,7 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public SysUserResponse partialSysUserById(Integer id, SysUserUpdateRequest sysUserUpdateRequest) {
+    public SysUserResponse partialSysUserById(Long id, SysUserUpdateRequest sysUserUpdateRequest) {
         SysUser flush = sysUserRepository.findById(id).orElseThrow();
         sysUserMapper.partialUpdate(sysUserUpdateRequest, flush);
         Set<SysRole> roles = new HashSet<>(sysRoleRepository.findAllById(sysUserUpdateRequest.getRoleIds()));
@@ -78,7 +79,7 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public void deleteSysUserById(Integer id) {
+    public void deleteSysUserById(Long id) {
         sysUserRepository.deleteById(id);
     }
 }

@@ -1,9 +1,9 @@
 package org.github.zhengchalei.controller.system;
 
 import lombok.RequiredArgsConstructor;
-import org.github.zhengchalei.request.SysRoleSaveRequest;
-import org.github.zhengchalei.request.SysRoleUpdateRequest;
-import org.github.zhengchalei.response.SysRoleResponse;
+import org.github.zhengchalei.entity.system.request.SysRoleSaveRequest;
+import org.github.zhengchalei.entity.system.request.SysRoleUpdateRequest;
+import org.github.zhengchalei.entity.system.response.SysRoleResponse;
 import org.github.zhengchalei.service.system.SysRoleService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,7 +31,7 @@ public class SysRoleController {
     }
 
     @GetMapping("/id/{id}")
-    public SysRoleResponse findSysRoleById(@PathVariable Integer id) {
+    public SysRoleResponse findSysRoleById(@PathVariable Long id) {
         return sysRoleService.findSysRoleById(id);
     }
 
@@ -41,17 +41,17 @@ public class SysRoleController {
     }
 
     @PutMapping("/update/{id}")
-    public SysRoleResponse updateSysRoleById(@PathVariable Integer id, @RequestBody SysRoleUpdateRequest sysRoleUpdateRequest) {
+    public SysRoleResponse updateSysRoleById(@PathVariable Long id, @RequestBody SysRoleUpdateRequest sysRoleUpdateRequest) {
         return sysRoleService.updateSysRoleById(id, sysRoleUpdateRequest);
     }
 
     @PatchMapping("/partial-update/{id}")
-    public SysRoleResponse partialSysRoleById(@PathVariable Integer id, @RequestBody SysRoleUpdateRequest sysRoleUpdateRequest) {
+    public SysRoleResponse partialSysRoleById(@PathVariable Long id, @RequestBody SysRoleUpdateRequest sysRoleUpdateRequest) {
         return sysRoleService.partialSysRoleById(id, sysRoleUpdateRequest);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteSysRoleById(@PathVariable Integer id) {
+    public void deleteSysRoleById(@PathVariable Long id) {
         sysRoleService.deleteSysRoleById(id);
     }
 }

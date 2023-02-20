@@ -1,9 +1,9 @@
 package org.github.zhengchalei.controller.system;
 
 import lombok.RequiredArgsConstructor;
-import org.github.zhengchalei.request.SysUserSaveRequest;
-import org.github.zhengchalei.request.SysUserUpdateRequest;
-import org.github.zhengchalei.response.SysUserResponse;
+import org.github.zhengchalei.entity.system.request.SysUserSaveRequest;
+import org.github.zhengchalei.entity.system.request.SysUserUpdateRequest;
+import org.github.zhengchalei.entity.system.response.SysUserResponse;
 import org.github.zhengchalei.service.system.SysUserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,7 +31,7 @@ public class SysUserController {
     }
 
     @GetMapping("/id/{id}")
-    public SysUserResponse findSysUserById(@PathVariable Integer id) {
+    public SysUserResponse findSysUserById(@PathVariable Long id) {
         return sysUserService.findSysUserById(id);
     }
 
@@ -41,17 +41,17 @@ public class SysUserController {
     }
 
     @PutMapping("/update/{id}")
-    public SysUserResponse updateSysUserById(@PathVariable Integer id, @RequestBody SysUserUpdateRequest sysUserUpdateRequest) {
+    public SysUserResponse updateSysUserById(@PathVariable Long id, @RequestBody SysUserUpdateRequest sysUserUpdateRequest) {
         return sysUserService.updateSysUserById(id, sysUserUpdateRequest);
     }
 
     @PatchMapping("/partial-update/{id}")
-    public SysUserResponse partialSysUserById(@PathVariable Integer id, @RequestBody SysUserUpdateRequest sysUserUpdateRequest) {
+    public SysUserResponse partialSysUserById(@PathVariable Long id, @RequestBody SysUserUpdateRequest sysUserUpdateRequest) {
         return sysUserService.partialSysUserById(id, sysUserUpdateRequest);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteSysUserById(@PathVariable Integer id) {
+    public void deleteSysUserById(@PathVariable Long id) {
         sysUserService.deleteSysUserById(id);
     }
 }

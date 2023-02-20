@@ -5,8 +5,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.NoRepositoryBean;
 
-import java.io.Serializable;
-
 @NoRepositoryBean
-public interface BaseRepository<T, ID extends Serializable> extends JpaRepository<T, ID>, QuerydslPredicateExecutor<T>, JpaSpecificationExecutor<T> {
+public interface BaseRepository<T> extends JpaRepository<T, Long>, QuerydslPredicateExecutor<T>, JpaSpecificationExecutor<T> {
 }
