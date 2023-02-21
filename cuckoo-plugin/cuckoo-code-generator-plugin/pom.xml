@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cuckoo-plugin-code-generator</artifactId>
+    <artifactId>cuckoo-code-generator-plugin</artifactId>
     <description>
         代码生成的Plugin模块, 目前预期是 Template + DB 独立模块, 热插拔方式处理
     </description>

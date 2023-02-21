@@ -13,6 +13,15 @@
 
     <modules>
         <module>cuckoo-system-service</module>
+        <module>cuckoo-auth-service</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.github.zhengchalei</groupId>
+            <artifactId>cuckoo-repository</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

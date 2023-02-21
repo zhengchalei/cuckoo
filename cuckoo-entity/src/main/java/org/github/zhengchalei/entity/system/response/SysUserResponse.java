@@ -17,8 +17,6 @@ public class SysUserResponse {
     private Long id;
     @Schema(description = "用户名", requiredMode = Schema.RequiredMode.REQUIRED)
     private String username;
-    @Schema(description = "密码", requiredMode = Schema.RequiredMode.REQUIRED)
-    private String password;
     @Schema(description = "头像", defaultValue = "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png")
     private String avatar;
     @Schema(description = "角色", requiredMode = Schema.RequiredMode.REQUIRED)

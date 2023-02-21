@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>org.github.zhengchalei</groupId>
-            <artifactId>cuckoo-plugin-code-generator</artifactId>
+            <artifactId>cuckoo-code-generator-plugin</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

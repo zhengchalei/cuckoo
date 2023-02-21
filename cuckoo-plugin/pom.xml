@@ -10,7 +10,7 @@
     </parent>
     <packaging>pom</packaging>
     <modules>
-        <module>cuckoo-plugin-code-generator</module>
+        <module>cuckoo-code-generator-plugin</module>
     </modules>
 
     <artifactId>cuckoo-plugin</artifactId>

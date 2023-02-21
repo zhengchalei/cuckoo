@@ -6,6 +6,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import org.github.zhengchalei.entity.base.BaseEntity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -23,6 +24,6 @@ public class Entity extends BaseEntity {
 
 
     @OneToMany
-    private Set<Field> fields;
+    private Set<Field> fields = new HashSet<>();
 
 }

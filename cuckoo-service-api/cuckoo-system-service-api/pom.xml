@@ -11,12 +11,4 @@
 
     <artifactId>cuckoo-system-service-api</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.github.zhengchalei</groupId>
-            <artifactId>cuckoo-repository</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
-
 </project>
