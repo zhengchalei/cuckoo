@@ -1,8 +1,6 @@
 package org.github.zhengchalei.plugin.generator.entity;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.github.zhengchalei.entity.base.BaseEntity;
 
@@ -10,6 +8,9 @@ import org.github.zhengchalei.entity.base.BaseEntity;
 @jakarta.persistence.Entity
 @Table(name = "plugin_code_gen_field")
 public class Field extends BaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
     // 字段名称
     private String name;
     // 字段类型
@@ -22,7 +23,7 @@ public class Field extends BaseEntity {
     // 注释, 不一定支持, 对应 db  comment
     private String description;
     // 唯一
-    private Boolean unique = false;
+    private Boolean uniqueRule = false;
     // 默认值
     private String defaultValue = "";
     // 可插入的
@@ -30,5 +31,5 @@ public class Field extends BaseEntity {
     // 可更新
     private Boolean updatable = true;
     // 忽略序列化
-    private Boolean ignore = false;
+    private Boolean jsonIgnore = false;
 }

@@ -1,7 +1,6 @@
 package org.github.zhengchalei.service.impl.auth.impl;
 
 import cn.dev33.satoken.stp.StpUtil;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.github.zhengchalei.entity.auth.request.LoginRequest;
 import org.github.zhengchalei.entity.system.entity.SysUser;
@@ -21,14 +20,6 @@ public class AuthServiceImpl implements AuthService {
     private final SysUserMapper sysUserMapper;
     private final PasswordEncoderService passwordEncoderService;
 
-    @PostConstruct
-    public void post() {
-        SysUser sysUser = new SysUser();
-        sysUser.setUsername("admin");
-        sysUser.setPassword("8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918");
-        sysUserRepository.save(sysUser);
-    }
-
     @Override
     public SysUserResponse accountLogin(LoginRequest loginRequest) {
         SysUser sysUser = sysUserRepository.findByUsername(loginRequest.getUsername()).orElseThrow();
@@ -40,7 +31,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public SysUserResponse currentUser() {
         long id = StpUtil.getLoginIdAsLong();
-        return sysUserMapper.toDto(sysUserRepository.findById(id).orElseThrow());
+        return sysUserMapper.toResponse(sysUserRepository.findById(id).orElseThrow());
     }
 
     @Override

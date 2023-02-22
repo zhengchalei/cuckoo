@@ -7,4 +7,5 @@ public interface PasswordEncoderService {
 
     void verifyPassword(String encryptedPassword, String password);
 
+    String defaultPassword();
 }

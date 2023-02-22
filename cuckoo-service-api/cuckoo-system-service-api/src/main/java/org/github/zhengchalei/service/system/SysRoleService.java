@@ -1,6 +1,6 @@
 package org.github.zhengchalei.service.system;
 
-import org.github.zhengchalei.entity.system.request.SysRoleSaveRequest;
+import org.github.zhengchalei.entity.system.request.SysRoleCreateRequest;
 import org.github.zhengchalei.entity.system.request.SysRoleUpdateRequest;
 import org.github.zhengchalei.entity.system.response.SysRoleResponse;
 import org.springframework.data.domain.Page;
@@ -13,7 +13,7 @@ public interface SysRoleService {
 
     SysRoleResponse findSysRoleById(Long id);
 
-    SysRoleResponse saveSysRole(SysRoleSaveRequest sysRoleSaveRequest);
+    SysRoleResponse createSysRole(SysRoleCreateRequest sysRoleCreateRequest);
 
     SysRoleResponse updateSysRoleById(Long id, SysRoleUpdateRequest sysRoleUpdateRequest);
 

@@ -3,12 +3,14 @@ package org.github.zhengchalei.controller.system;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.github.zhengchalei.common.R;
-import org.github.zhengchalei.entity.system.request.SysRoleSaveRequest;
+import org.github.zhengchalei.common.RPage;
+import org.github.zhengchalei.entity.system.request.SysRoleCreateRequest;
 import org.github.zhengchalei.entity.system.request.SysRoleUpdateRequest;
 import org.github.zhengchalei.entity.system.response.SysRoleResponse;
 import org.github.zhengchalei.service.system.SysRoleService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -24,13 +26,13 @@ public class SysRoleController {
     private final SysRoleService sysRoleService;
 
     @GetMapping("/page")
-    public R<Page<SysRoleResponse>> findSysRolePage(@PageableDefault(size = 10, sort = "id") Pageable pageable, @RequestParam(required = false, defaultValue = "") String name) {
+    public RPage<SysRoleResponse> findSysRolePage(@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, @RequestParam(required = false, defaultValue = "") String name) {
         Page<SysRoleResponse> sysRolePage = sysRoleService.findSysRolePage(pageable, name);
-        return R.data(sysRolePage);
+        return RPage.page(sysRolePage);
     }
 
     @GetMapping("/list")
-    public R<List<SysRoleResponse>> findSysRolePage(@RequestParam(required = false, defaultValue = "") String name) {
+    public R<List<SysRoleResponse>> findSysRoleList(@RequestParam(required = false, defaultValue = "") String name) {
         List<SysRoleResponse> sysRoleList = sysRoleService.findSysRoleList(name);
         return R.data(sysRoleList);
     }
@@ -41,9 +43,9 @@ public class SysRoleController {
         return R.data(sysRoleById);
     }
 
-    @PostMapping("/save")
-    public R<SysRoleResponse> saveSysRole(@Validated @RequestBody SysRoleSaveRequest sysRoleSaveRequest) {
-        SysRoleResponse sysRoleResponse = sysRoleService.saveSysRole(sysRoleSaveRequest);
+    @PostMapping("/create")
+    public R<SysRoleResponse> createSysRole(@Validated @RequestBody SysRoleCreateRequest sysRoleCreateRequest) {
+        SysRoleResponse sysRoleResponse = sysRoleService.createSysRole(sysRoleCreateRequest);
         return R.data(sysRoleResponse);
     }
 

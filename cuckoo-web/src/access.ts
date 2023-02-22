@@ -1,9 +1,9 @@
 /**
  * @see https://umijs.org/zh-CN/plugins/plugin-access
  * */
-export default function access(initialState: { currentUser?: API.LoginResponse } | undefined) {
+export default function access(initialState: { currentUser?: API.SysUserResponse } | undefined) {
     const {currentUser} = initialState ?? {};
     return {
-        canAdmin: currentUser && currentUser.data?.roles.map(role => role.code).concat('admin'),
+        admin: currentUser && currentUser.roles?.map(role => role.code).concat('admin'),
     };
 }

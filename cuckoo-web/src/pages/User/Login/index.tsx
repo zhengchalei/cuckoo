@@ -329,7 +329,7 @@ const Login: React.FC = () => {
                                         ),
                                     },
                                 ]}
-                                onGetCaptcha={async (phone) => {
+                                onGetCaptcha={async () => {
                                     // const result = await getFakeCaptcha({
                                     //     phone,
                                     // });

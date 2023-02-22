@@ -21,4 +21,6 @@ public class SysUserResponse {
     private String avatar;
     @Schema(description = "角色", requiredMode = Schema.RequiredMode.REQUIRED)
     private Set<SysRoleResponse> roles = new HashSet<>();
+    @Schema(description = "角色id", requiredMode = Schema.RequiredMode.REQUIRED)
+    private Set<Long> roleIds = new HashSet<>();
 }

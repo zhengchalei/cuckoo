@@ -1,8 +1,6 @@
 package org.github.zhengchalei.plugin.generator.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.github.zhengchalei.entity.base.BaseEntity;
 
@@ -13,7 +11,9 @@ import java.util.Set;
 @jakarta.persistence.Entity
 @Table(name = "plugin_code_gen_entity")
 public class Entity extends BaseEntity {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
     // 服务名
     @Column(nullable = false)
     private String serviceName;

@@ -3,12 +3,14 @@ package org.github.zhengchalei.controller.system;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.github.zhengchalei.common.R;
-import org.github.zhengchalei.entity.system.request.SysUserSaveRequest;
+import org.github.zhengchalei.common.RPage;
+import org.github.zhengchalei.entity.system.request.SysUserCreateRequest;
 import org.github.zhengchalei.entity.system.request.SysUserUpdateRequest;
 import org.github.zhengchalei.entity.system.response.SysUserResponse;
 import org.github.zhengchalei.service.system.SysUserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -24,13 +26,17 @@ public class SysUserController {
     private final SysUserService sysUserService;
 
     @GetMapping("/page")
-    public R<Page<SysUserResponse>> findSysUserPage(@PageableDefault(size = 10, sort = "id") Pageable pageable, @RequestParam(required = false, defaultValue = "") String username) {
-        Page<SysUserResponse> sysUserPage = sysUserService.findSysUserPage(pageable, username);
-        return R.data(sysUserPage);
+    public RPage<SysUserResponse> findSysUserPage(
+            @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
+            @RequestParam(required = false, defaultValue = "") String username,
+            @RequestParam(required = false) Long roleId
+    ) {
+        Page<SysUserResponse> sysUserPage = sysUserService.findSysUserPage(pageable, username, roleId);
+        return RPage.page(sysUserPage);
     }
 
     @GetMapping("/list")
-    public R<List<SysUserResponse>> findSysUserPage(@RequestParam(required = false, defaultValue = "") String username) {
+    public R<List<SysUserResponse>> findSysUserList(@RequestParam(required = false, defaultValue = "") String username) {
         List<SysUserResponse> sysUserList = sysUserService.findSysUserList(username);
         return R.data(sysUserList);
     }
@@ -41,9 +47,9 @@ public class SysUserController {
         return R.data(sysUserById);
     }
 
-    @PostMapping("/save")
-    public R<SysUserResponse> saveSysUser(@Validated @RequestBody SysUserSaveRequest sysUserSaveRequest) {
-        SysUserResponse sysUserResponse = sysUserService.saveSysUser(sysUserSaveRequest);
+    @PostMapping("/create")
+    public R<SysUserResponse> createSysUser(@Validated @RequestBody SysUserCreateRequest sysUserCreateRequest) {
+        SysUserResponse sysUserResponse = sysUserService.createSysUser(sysUserCreateRequest);
         return R.data(sysUserResponse);
     }
 

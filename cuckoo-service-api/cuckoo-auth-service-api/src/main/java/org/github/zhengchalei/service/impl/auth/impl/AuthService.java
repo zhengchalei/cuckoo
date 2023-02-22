@@ -9,4 +9,5 @@ public interface AuthService {
     SysUserResponse currentUser();
 
     void outLogin();
+
 }

@@ -32,7 +32,7 @@ export default [
         path: '/admin',
         name: 'admin',
         icon: 'crown',
-        access: 'canAdmin',
+        access: 'admin',
         routes: [
             {
                 path: '/admin',
@@ -48,6 +48,28 @@ export default [
     {
         path: '/',
         redirect: '/welcome',
+    },
+    {
+        path: '/system',
+        name: 'system',
+        icon: 'SettingOutlined',
+        access: 'admin',
+        routes: [
+            {
+                path: '/system',
+                redirect: '/system/sys-user',
+            },
+            {
+                path: '/system/sys-user',
+                name: 'sys-user',
+                component: './System/SysUser',
+            },
+            {
+                path: '/system/sys-role',
+                name: 'sys-role',
+                component: './System/SysRole',
+            },
+        ],
     },
     {
         path: '*',

@@ -11,7 +11,7 @@ declare namespace API {
         id: number;
     };
 
-    type findSysRolePage1Params = {
+    type findSysRoleListParams = {
         name?: string;
     };
 
@@ -24,13 +24,14 @@ declare namespace API {
         id: number;
     };
 
-    type findSysUserPage1Params = {
+    type findSysUserListParams = {
         username?: string;
     };
 
     type findSysUserPageParams = {
         pageable: Pageable;
         username?: string;
+        roleId?: number;
     };
 
     type LoginRequest = {
@@ -51,43 +52,6 @@ declare namespace API {
         sort?: string[];
     };
 
-    type PageableObject = {
-        offset?: number;
-        sort?: SortObject;
-        pageNumber?: number;
-        pageSize?: number;
-        paged?: boolean;
-        unpaged?: boolean;
-    };
-
-    type PageSysRoleResponse = {
-        totalElements?: number;
-        totalPages?: number;
-        size?: number;
-        content?: SysRoleResponse[];
-        number?: number;
-        sort?: SortObject;
-        numberOfElements?: number;
-        pageable?: PageableObject;
-        first?: boolean;
-        last?: boolean;
-        empty?: boolean;
-    };
-
-    type PageSysUserResponse = {
-        totalElements?: number;
-        totalPages?: number;
-        size?: number;
-        content?: SysUserResponse[];
-        number?: number;
-        sort?: SortObject;
-        numberOfElements?: number;
-        pageable?: PageableObject;
-        first?: boolean;
-        last?: boolean;
-        empty?: boolean;
-    };
-
     type partialSysRoleByIdParams = {
         id: number;
     };
@@ -98,77 +62,71 @@ declare namespace API {
 
     type RListSysRoleResponse = {
         success?: boolean;
-        code?: number;
-        message?: string;
         errorMessage?: string;
+        errorCode?: number;
+        showType?: string;
         data?: SysRoleResponse[];
     };
 
     type RListSysUserResponse = {
         success?: boolean;
-        code?: number;
-        message?: string;
         errorMessage?: string;
+        errorCode?: number;
+        showType?: string;
         data?: SysUserResponse[];
     };
 
     type RLoginResponse = {
         success?: boolean;
-        code?: number;
-        message?: string;
         errorMessage?: string;
+        errorCode?: number;
+        showType?: string;
         data?: LoginResponse;
     };
 
     type RPageSysRoleResponse = {
         success?: boolean;
-        code?: number;
-        message?: string;
         errorMessage?: string;
-        data?: PageSysRoleResponse;
+        errorCode?: number;
+        showType?: string;
+        data?: SysRoleResponse[];
+        total?: number;
     };
 
     type RPageSysUserResponse = {
         success?: boolean;
-        code?: number;
-        message?: string;
         errorMessage?: string;
-        data?: PageSysUserResponse;
+        errorCode?: number;
+        showType?: string;
+        data?: SysUserResponse[];
+        total?: number;
     };
 
     type RSysRoleResponse = {
         success?: boolean;
-        code?: number;
-        message?: string;
         errorMessage?: string;
+        errorCode?: number;
+        showType?: string;
         data?: SysRoleResponse;
     };
 
     type RSysUserResponse = {
         success?: boolean;
-        code?: number;
-        message?: string;
         errorMessage?: string;
+        errorCode?: number;
+        showType?: string;
         data?: SysUserResponse;
     };
 
     type RVoid = {
         success?: boolean;
-        code?: number;
-        message?: string;
         errorMessage?: string;
+        errorCode?: number;
+        showType?: string;
         data?: Record<string, any>;
     };
 
-    type SortObject = {
-        empty?: boolean;
-        sorted?: boolean;
-        unsorted?: boolean;
-    };
-
-    type SysRoleResponse = {
-        /** id */
-        id: number;
+    type SysRoleCreateRequest = {
         /** 角色名 */
         name: string;
         /** 角色编码 */
@@ -176,7 +134,9 @@ declare namespace API {
         description?: string;
     };
 
-    type SysRoleSaveRequest = {
+    type SysRoleResponse = {
+        /** id */
+        id: number;
         /** 角色名 */
         name: string;
         /** 角色编码 */
@@ -194,6 +154,15 @@ declare namespace API {
         description?: string;
     };
 
+    type SysUserCreateRequest = {
+        /** 用户名 */
+        username: string;
+        /** 头像 */
+        avatar?: string;
+        /** 角色 */
+        roleIds: number[];
+    };
+
     type SysUserResponse = {
         /** id */
         id: number;
@@ -203,16 +172,7 @@ declare namespace API {
         avatar?: string;
         /** 角色 */
         roles: SysRoleResponse[];
-    };
-
-    type SysUserSaveRequest = {
-        /** 用户名 */
-        username: string;
-        /** 密码 */
-        password: string;
-        /** 头像 */
-        avatar?: string;
-        /** 角色 */
+        /** 角色id */
         roleIds: number[];
     };
 

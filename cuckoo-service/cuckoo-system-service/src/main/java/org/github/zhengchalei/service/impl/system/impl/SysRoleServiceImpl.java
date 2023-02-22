@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.github.zhengchalei.entity.system.entity.SysRole;
 import org.github.zhengchalei.entity.system.mapper.SysRoleMapper;
-import org.github.zhengchalei.entity.system.request.SysRoleSaveRequest;
+import org.github.zhengchalei.entity.system.request.SysRoleCreateRequest;
 import org.github.zhengchalei.entity.system.request.SysRoleUpdateRequest;
 import org.github.zhengchalei.entity.system.response.SysRoleResponse;
 import org.github.zhengchalei.repository.system.SysRoleRepository;
@@ -38,7 +38,7 @@ public class SysRoleServiceImpl implements SysRoleService {
     @Override
     public List<SysRoleResponse> findSysRoleList(String name) {
         Iterable<SysRole> roles = sysRoleRepository.findAll(sysRole.name.containsIgnoreCase(name));
-        return StreamSupport.stream(roles.spliterator(), false).map(sysRoleMapper::toDto).collect(Collectors.toList());
+        return StreamSupport.stream(roles.spliterator(), false).map(sysRoleMapper::toResponse).collect(Collectors.toList());
     }
 
     @Override
@@ -47,8 +47,8 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
     @Override
-    public SysRoleResponse saveSysRole(SysRoleSaveRequest sysRoleSaveRequest) {
-        SysRole save = sysRoleMapper.toEntity(sysRoleSaveRequest);
+    public SysRoleResponse createSysRole(SysRoleCreateRequest sysRoleCreateRequest) {
+        SysRole save = sysRoleMapper.toEntity(sysRoleCreateRequest);
         SysRole result = sysRoleRepository.save(save);
         return sysRoleMapper.toResponse(result);
     }

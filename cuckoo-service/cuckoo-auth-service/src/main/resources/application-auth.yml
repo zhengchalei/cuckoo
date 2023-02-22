@@ -14,3 +14,6 @@ sa-token:
   # 是否输出操作日志
   is-log: true
   is-print: false
+default:
+  password: 123456
+

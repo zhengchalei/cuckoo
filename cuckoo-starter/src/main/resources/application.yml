@@ -1,4 +1,10 @@
 spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/cuckoo
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
   jpa:
     generate-ddl: true
     show-sql: true
@@ -13,6 +19,10 @@ spring:
       pageable:
         # 分页 第一页为 1
         one-indexed-parameters: true
+  profiles:
+    include:
+      - auth
+      - generator
 springdoc:
   swagger-ui:
     path: /swagger-ui.html

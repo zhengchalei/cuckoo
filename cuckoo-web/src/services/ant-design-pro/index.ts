@@ -7,7 +7,7 @@ import * as SysRoleApi from './SysRoleApi';
 import * as AuthApi from './AuthApi';
 
 export default {
-    SysUserApi,
-    SysRoleApi,
-    AuthApi,
+  SysUserApi,
+  SysRoleApi,
+  AuthApi,
 };
