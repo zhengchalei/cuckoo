@@ -11,8 +11,6 @@ import java.io.Serializable;
  */
 @Data
 public class SysRoleUpdateRequest implements Serializable {
-    @Schema(description = "id", requiredMode = Schema.RequiredMode.REQUIRED)
-    private Long id;
     @Schema(description = "角色名", requiredMode = Schema.RequiredMode.REQUIRED)
     private String name;
     @Schema(description = "角色编码", requiredMode = Schema.RequiredMode.REQUIRED)

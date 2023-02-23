@@ -84,7 +84,6 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Override
     public SysUserResponse updateSysUserById(@NotNull Long id, @NotNull SysUserUpdateRequest sysUserUpdateRequest) {
-        sysUserUpdateRequest.setId(id);
         SysUser flush = sysUserRepository.findById(id).orElseThrow();
         sysUserMapper.update(sysUserUpdateRequest, flush);
         Set<SysRole> roles = new HashSet<>(sysRoleRepository.findAllById(sysUserUpdateRequest.getRoleIds()));

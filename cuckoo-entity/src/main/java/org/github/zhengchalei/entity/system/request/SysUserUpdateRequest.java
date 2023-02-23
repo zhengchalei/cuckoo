@@ -12,8 +12,6 @@ import java.util.Set;
  */
 @Data
 public class SysUserUpdateRequest {
-    @Schema(description = "id", requiredMode = Schema.RequiredMode.REQUIRED)
-    private Long id;
     @Schema(description = "用户名", requiredMode = Schema.RequiredMode.REQUIRED)
     private String username;
     @Schema(description = "密码", requiredMode = Schema.RequiredMode.REQUIRED)

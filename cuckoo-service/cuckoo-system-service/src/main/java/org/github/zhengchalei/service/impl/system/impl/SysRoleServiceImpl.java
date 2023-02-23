@@ -55,7 +55,6 @@ public class SysRoleServiceImpl implements SysRoleService {
 
     @Override
     public SysRoleResponse updateSysRoleById(Long id, SysRoleUpdateRequest sysRoleUpdateRequest) {
-        sysRoleUpdateRequest.setId(id);
         SysRole flush = sysRoleRepository.findById(id).orElseThrow();
         sysRoleMapper.update(sysRoleUpdateRequest, flush);
         return sysRoleMapper.toResponse(flush);

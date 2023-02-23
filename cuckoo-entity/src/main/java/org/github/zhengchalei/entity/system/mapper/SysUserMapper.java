@@ -23,11 +23,17 @@ public interface SysUserMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     SysUser toEntity(SysUserCreateRequest sysUserCreateRequest);
 
-    @Mapping(target = "password", ignore = true)
+    @Mappings({
+            @Mapping(target = "password", ignore = true),
+            @Mapping(target = "avatar", ignore = true)
+    })
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     SysUser partialUpdate(SysUserUpdateRequest sysUserUpdateRequest, @MappingTarget SysUser sysUser);
 
-    @Mapping(target = "password", ignore = true)
+    @Mappings({
+            @Mapping(target = "password", ignore = true),
+            @Mapping(target = "avatar", ignore = true)
+    })
     SysUser update(SysUserUpdateRequest sysUserUpdateRequest, @MappingTarget SysUser flush);
 
     @Mapping(target = "roleIds", expression = "java(sysUser.getRoles().stream().map(SysRole::getId).collect(Collectors.toSet()))")
